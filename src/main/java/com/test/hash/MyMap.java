@@ -9,6 +9,7 @@ public class MyMap<K, V>
 	private int max;// 能存的最大的数=capacity*factor
 
 	// 自己设置容量和装载因子的构造器
+	@SuppressWarnings("unchecked")
 	public MyMap(int init_Capaticy, float load_factor)
 	{
 		if (init_Capaticy < 0)
@@ -37,6 +38,7 @@ public class MyMap<K, V>
 	 * @param v
 	 * @return
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public boolean put(K k, V v)
 	{
 		// 1.计算K的hash值
@@ -59,6 +61,7 @@ public class MyMap<K, V>
 	 * @param newSize
 	 *            新的容器大小
 	 */
+	@SuppressWarnings("unchecked")
 	private void reSize(int newSize)
 	{
 		// 1.声明新数组
@@ -89,6 +92,7 @@ public class MyMap<K, V>
 	 * @param table
 	 * @return
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private boolean setEntry(Entry<K, V> temp, Entry[] table)
 	{
 		// 根据hash值找到下标
@@ -145,6 +149,7 @@ public class MyMap<K, V>
 	 * @param index
 	 * @param table
 	 */
+	@SuppressWarnings("rawtypes")
 	private void setFirstEntry(Entry<K, V> temp, int index, Entry[] table)
 	{
 		// 1.判断当前容量是否超标，如果超标，调用扩容方法
@@ -214,6 +219,7 @@ public class MyMap<K, V>
 	 * @param <V>
 	 *            value
 	 */
+	@SuppressWarnings("hiding")
 	class Entry<K, V>
 	{
 		Entry<K, V> next;// 下一个结点

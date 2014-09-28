@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -17,8 +16,6 @@ import java.util.Map;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import net.sf.json.JSONObject;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
@@ -273,29 +270,6 @@ public class HttpRequestUtils
 		        + "&signature=C/yS38A7QoKRwe/qpsvTyBLloQW4YlEgfC1pVbaF0SE=");
 	}
 
-	/**
-	 * 获取HTTP GET请求中的参数
-	 * 
-	 * @param request
-	 * @param paramName
-	 * @return
-	 */
-	private static String getHttpGETRequestParamValue(String queryString, String paramName)
-	{
-		if (StringUtils.isEmpty(queryString) || StringUtils.isEmpty(paramName))
-		{
-			return "";
-		}
-
-		Map<String, String> map = HttpRequestUtils.convertQueryStringToMap(queryString);
-		if (null == map)
-		{
-			return "";
-		}
-
-		return map.get(paramName);
-	}
-
 	private static String readLine(ServletInputStream in)
 	{
 		byte[] buf = new byte[8 * 1024];
@@ -325,32 +299,6 @@ public class HttpRequestUtils
 		}
 
 		return sbuf.toString();
-	}
-
-	/**
-	 * 获取HTTP POST请求中的参数
-	 * 
-	 * @param request
-	 * @param paramName
-	 * @return
-	 * @throws UnsupportedEncodingException 
-	 */
-	private static String getHttpPOSTRequestParamValue(String postData, String paramName)
-	{
-		String paramValue = "";
-
-		JSONObject jsonObject = null;
-		try
-		{
-			jsonObject = JSONObject.fromObject(postData);
-			paramValue = jsonObject.getString(paramName);
-		}
-		catch (Exception e)
-		{
-			HttpRequestUtils.DEBUGGER.error("Exception: " + e.toString());
-		}
-
-		return paramValue;
 	}
 
 	/**

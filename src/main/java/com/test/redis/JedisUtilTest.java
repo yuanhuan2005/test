@@ -81,6 +81,7 @@ public class JedisUtilTest
 	/**
 	 * jedis²Ù×÷Map
 	 */
+	@SuppressWarnings("unused")
 	@Test
 	public void testMap()
 	{
