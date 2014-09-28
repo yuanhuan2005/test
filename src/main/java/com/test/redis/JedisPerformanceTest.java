@@ -33,7 +33,7 @@ public class JedisPerformanceTest
 		Iterator<String> keysIter = keys.iterator();
 		while (keysIter.hasNext())
 		{
-			jedis.del(keysIter.next());
+			//			jedis.del(keysIter.next());
 		}
 
 		jedis.disconnect();
