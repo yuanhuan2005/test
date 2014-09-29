@@ -2,7 +2,7 @@ package com.test.fibonacci;
 
 public class Test
 {
-	public static int sum(int num)
+	public static int fibonacci(int num)
 	{
 		if (num == 0)
 		{
@@ -14,13 +14,13 @@ public class Test
 		}
 		else
 		{
-			return (num + Test.sum(num - 1));
+			return (num + Test.fibonacci(num - 1));
 		}
 	}
 
 	public static void main(String[] args)
 	{
-		System.out.println(Test.sum(10));
+		System.out.println(Test.fibonacci(2364));
 	}
 
 }
