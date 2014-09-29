@@ -16,7 +16,7 @@ public class TestWonder
 		String postData = "";
 
 		String featureFilename = "D:/Download/wonder/results/smokin-aces-2.data";
-		byte[] feature = Arrays.copyOfRange(FileUtils.toByteArray(featureFilename), 0, 164);
+		byte[] feature = Arrays.copyOfRange(FileUtils.toByteArray(featureFilename), 0, 160);
 		System.out.println(feature.length);
 		postData = new String(feature);
 
