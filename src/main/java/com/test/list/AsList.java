@@ -6,6 +6,7 @@ import java.util.List;
 public class AsList
 {
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void main(String[] args)
 	{
 		// 缺陷1：不支持基本数据类型：int/long/short/byte/boolean/char/double/float

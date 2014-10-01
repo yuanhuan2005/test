@@ -181,8 +181,8 @@ public class FeatureUtils
 		{
 			hashcode = FeatureUtils.getBinaryStringHashCode(FeatureUtils.getFeatureBinaryString(FeatureUtils
 			        .getFeature(i, i + 160)));
-			//			System.out.println("No." + i + "/" + loopNum + "######### hashcode=" + hashcode);
-			//			results[hashcode] += 1;
+			System.out.println("No." + i + "/" + loopNum + "######### hashcode=" + hashcode);
+			results[hashcode] += 1;
 		}
 		System.out.println("Cost time: " + (System.currentTimeMillis() - bt));
 
