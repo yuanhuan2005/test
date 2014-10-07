@@ -38,11 +38,18 @@ public class Main
 		long primeECostTime = System.currentTimeMillis() - beginTime;
 		System.out.println("PrimeE total " + primeEList.size() + " primes, Cost time: " + primeECostTime + " ms");
 
+		beginTime = System.currentTimeMillis();
+		List<Integer> primeFList = PrimeF.getAllPrimes(num);
+		long primeFCostTime = System.currentTimeMillis() - beginTime;
+		System.out.println("PrimeF total " + primeFList.size() + " primes, Cost time: " + primeFCostTime + " ms");
+
 		System.out.println("");
 	}
 
 	public static void main(String[] args)
 	{
+		Main.test(10);
+		Main.test(100);
 		Main.test(1000);
 		Main.test(10000);
 		Main.test(100000);
