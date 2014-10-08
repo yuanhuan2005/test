@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class FeatureUtils
 {
 	// smokin-aces-2.data
-	static String featureFilename = "E:/BaiduYunDownload/wonder/smokin-aces-2.data";
+	static String featureFilename = "E:/BaiduYunDownload/wonder/results/smokin-aces-2.data";
 	static byte[] allFeatures;
 
 	public static void init()
@@ -174,7 +174,7 @@ public class FeatureUtils
 
 		int[] results = new int[819840 + 1];
 		int loopNum = 2130000000;
-		loopNum = 1000000;
+		loopNum = 10000;
 		int hashcode = 0;
 		long bt = System.currentTimeMillis();
 		for (int i = 0; i < loopNum; i++)
