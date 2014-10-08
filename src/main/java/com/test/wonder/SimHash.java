@@ -8,12 +8,21 @@ import java.util.StringTokenizer;
 
 public class SimHash
 {
-
 	private final String tokens;
 
 	private final BigInteger intSimHash;
 
 	private String strSimHash;
+
+	public String getStrSimHash()
+	{
+		return strSimHash;
+	}
+
+	public BigInteger getIntSimHash()
+	{
+		return intSimHash;
+	}
 
 	private int hashbits = 64;
 
@@ -77,7 +86,7 @@ public class SimHash
 			}
 		}
 		strSimHash = simHashBuffer.toString();
-		System.out.println(strSimHash + " length " + strSimHash.length());
+		//		System.out.println(strSimHash + " length " + strSimHash.length());
 		return fingerprint;
 	}
 
@@ -146,6 +155,7 @@ public class SimHash
 		return distance;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public List subByDistance(SimHash simHash, int distance)
 	{
 		// 分成几组来检查
@@ -154,7 +164,6 @@ public class SimHash
 
 		StringBuffer buffer = new StringBuffer();
 
-		int k = 0;
 		for (int i = 0; i < intSimHash.bitLength(); i++)
 		{
 			// 当且仅当设置了指定的位时，返回 true
@@ -173,7 +182,7 @@ public class SimHash
 			{
 				// 将二进制转为BigInteger
 				BigInteger eachValue = new BigInteger(buffer.toString(), 2);
-				System.out.println("----" + eachValue);
+				//				System.out.println("----" + eachValue);
 				buffer.delete(0, buffer.length());
 				characters.add(eachValue);
 			}
