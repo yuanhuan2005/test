@@ -2,7 +2,6 @@ package com.test.wonder;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -38,8 +37,6 @@ public class SimHash
 		this.hashbits = hashbits;
 		intSimHash = simHash();
 	}
-
-	HashMap<String, Integer> wordMap = new HashMap<String, Integer>();
 
 	public BigInteger simHash()
 	{
