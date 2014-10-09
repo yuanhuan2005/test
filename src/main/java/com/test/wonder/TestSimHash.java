@@ -90,6 +90,7 @@ public class TestSimHash
 		TestSimHash.testDistance(64, 10000);
 		TestSimHash.testDistance(64, 16000);
 		TestSimHash.testDistance(64, 20000);
+		TestSimHash.testDistance(64, 64000);
 		TestSimHash.testDistance(64, 100000);
 		TestSimHash.testDistance(64, 1000000);
 		TestSimHash.testDistance(64, 2592000);
