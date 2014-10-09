@@ -1,32 +1,50 @@
 package com.test.wonder;
 
-import org.apache.commons.lang.StringUtils;
-
 public class TestSimHash
 {
-	public static void test(int bit, int loop)
+	public static void testSimhash(int bit, int loop)
 	{
 		long beginTime = 0;
 		FeatureUtils.init();
 
-		int dis = 0;
+		String fbs1 = FeatureUtils.getFeatureBinaryString(FeatureUtils.getFeature(0, 160));
+		beginTime = System.currentTimeMillis();
+		for (int i = 0; i < loop; i++)
+		{
+			SimHash.getStrSimHash(fbs1);
+		}
+		System.out.println("testSimhash: bit=" + bit + " ### loop=" + loop + " ### cost time : "
+		        + (System.currentTimeMillis() - beginTime) + " ms");
+	}
+
+	public static void testDistance(int bit, int loop)
+	{
+		long beginTime = 0;
+		FeatureUtils.init();
+
 		int from = 164 * 11232;
 
 		String fbs1 = FeatureUtils.getFeatureBinaryString(FeatureUtils.getFeature(0, 160));
 		String fbs2 = FeatureUtils.getFeatureBinaryString(FeatureUtils.getFeature(from, from + 160));
 
-		SimHash hash1 = new SimHash(fbs1);
-		SimHash hash2 = new SimHash(fbs2);
-		//		System.out.println(hash1.getStrSimHash() + "\t" + hash1.getIntSimHash());
-		//		System.out.println(hash2.getStrSimHash() + "\t" + hash2.getIntSimHash());
+		String simhash1 = SimHash.getStrSimHash(fbs1);
+		String simhash2 = SimHash.getStrSimHash(fbs2);
+		//		System.out.println(simhash1);
+		//		System.out.println(simhash2);
+		int dis = 0;
+		int threshold = 3;
 
 		beginTime = System.currentTimeMillis();
 		for (int i = 0; i < loop; i++)
 		{
-			dis = StringUtils.getLevenshteinDistance(hash1.getStrSimHash(), hash2.getStrSimHash());
+			dis = SimHash.getHammingDistance(simhash1, simhash2);
+			if (dis <= threshold)
+			{
+				break;
+			}
 			//			System.out.println("No." + i + " dis: " + dis);
 		}
-		System.out.println("bit=" + bit + " ### loop=" + loop + " ### cost time : "
+		System.out.println("testDistance: bit=" + bit + " ### loop=" + loop + " ### cost time : "
 		        + (System.currentTimeMillis() - beginTime) + " ms");
 	}
 
@@ -39,29 +57,48 @@ public class TestSimHash
 		String sh = "";
 		for (int i = 0; i < 1; i++)
 		{
-			SimHash hash1 = new SimHash(fbs1);
-			sh = hash1.getStrSimHash();
+			sh = SimHash.getStrSimHash(fbs1);
 		}
 		System.out.println("cost time : " + (System.currentTimeMillis() - beginTime) + " ms");
 
 		System.out.println(sh);
 	}
 
-	public static void testLoop()
+	public static void testSimhashLoop()
 	{
-		TestSimHash.test(64, 1);
-		TestSimHash.test(64, 3000);
-		TestSimHash.test(64, 5000);
-		TestSimHash.test(64, 10000);
-		TestSimHash.test(64, 16000);
-		TestSimHash.test(64, 20000);
-		TestSimHash.test(64, 100000);
-		TestSimHash.test(64, 1000000);
-		TestSimHash.test(64, 1800000);
+		TestSimHash.testSimhash(64, 1);
+		TestSimHash.testSimhash(64, 1000);
+		TestSimHash.testSimhash(64, 1500);
+		TestSimHash.testSimhash(64, 2000);
+		TestSimHash.testSimhash(64, 2500);
+		TestSimHash.testSimhash(64, 3000);
+		TestSimHash.testSimhash(64, 5000);
+		TestSimHash.testSimhash(64, 10000);
+		TestSimHash.testSimhash(64, 20000);
+		//		TestSimHash.testSimhash(64, 100000);
+		//		TestSimHash.testSimhash(64, 1000000);
+		//		TestSimHash.testSimhash(64, 2592000);
+		//		TestSimHash.testSimhash(64, 25920000);
+		//		TestSimHash.testSimhash(64, 259200000);
+	}
+
+	public static void testGetDistanceLoop()
+	{
+		TestSimHash.testDistance(64, 1);
+		TestSimHash.testDistance(64, 3000);
+		TestSimHash.testDistance(64, 5000);
+		TestSimHash.testDistance(64, 10000);
+		TestSimHash.testDistance(64, 16000);
+		TestSimHash.testDistance(64, 20000);
+		TestSimHash.testDistance(64, 100000);
+		TestSimHash.testDistance(64, 1000000);
+		TestSimHash.testDistance(64, 2592000);
+		TestSimHash.testDistance(64, 25920000);
+		TestSimHash.testDistance(64, 259200000);
 	}
 
 	public static void main(String[] args)
 	{
-		TestSimHash.testLoop();
+		TestSimHash.testGetDistanceLoop();
 	}
 }

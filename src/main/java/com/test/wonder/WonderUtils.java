@@ -26,14 +26,17 @@ public class WonderUtils
 
 	public static void main(String[] args)
 	{
-		String fingerprint1 = WonderUtils.getRandomBitString(64);
-		String fingerprint2 = WonderUtils.getRandomBitString(64);
+		int len = 8;
+		String fingerprint1 = WonderUtils.getRandomBitString(len);
+		String fingerprint2 = WonderUtils.getRandomBitString(len);
 		System.out.println(fingerprint1);
 		System.out.println(fingerprint2);
-		System.out.println("dis=" + (StringUtils.getLevenshteinDistance(fingerprint1, fingerprint2)));
+		System.out.println("getLevenshteinDistance dis="
+		        + (StringUtils.getLevenshteinDistance(fingerprint1, fingerprint2)));
+		System.out.println("SimHash.getDistance    dis=" + (SimHash.getHammingDistance(fingerprint1, fingerprint2)));
 
 		long beginTime = System.currentTimeMillis();
-		for (int i = 0; i < 259200; i++)
+		for (int i = 0; i < 2592; i++)
 		{
 			StringUtils.getLevenshteinDistance(fingerprint1, fingerprint2);
 		}
