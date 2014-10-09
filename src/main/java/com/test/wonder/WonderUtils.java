@@ -36,9 +36,10 @@ public class WonderUtils
 		System.out.println("SimHash.getDistance    dis=" + (SimHash.getHammingDistance(fingerprint1, fingerprint2)));
 
 		long beginTime = System.currentTimeMillis();
-		for (int i = 0; i < 2592; i++)
+		for (int i = 0; i < 25920000; i++)
 		{
-			StringUtils.getLevenshteinDistance(fingerprint1, fingerprint2);
+			//			StringUtils.getLevenshteinDistance(fingerprint1, fingerprint2);
+			SimHash.getHammingDistance(fingerprint1, fingerprint2);
 		}
 
 		System.out.println("cost time : " + (System.currentTimeMillis() - beginTime) + " ms");
