@@ -25,7 +25,7 @@ public class DataUtils
 	{
 		try
 		{
-			String dataFile = "D:/Download/wonder/results/smokin-aces-2.data";
+			String dataFile = "E:/BaiduYunDownload/wonder/results/smokin-aces-2.data";
 			File file = new File(dataFile);
 			FileInputStream fin = new FileInputStream(file);
 			byte[] filebt = DataUtils.readStream(fin);
