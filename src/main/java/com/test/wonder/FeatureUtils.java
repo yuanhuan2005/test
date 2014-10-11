@@ -153,19 +153,14 @@ public class FeatureUtils
 		return distance;
 	}
 
-	public static String getFeatureBinaryString(byte[] feature)
+	public static String getFeatureBinaryString(byte[] bytes)
 	{
-		String featureBinaryString = "";
-		for (int i = 0; i < feature.length; i++)
+		StringBuilder sb = new StringBuilder(bytes.length * Byte.SIZE);
+		for (int i = 0; i < Byte.SIZE * bytes.length; i++)
 		{
-			int hashcode = FeatureUtils.getByteHashCode(feature[i]) + 128;
-			String binaryString = Integer.toBinaryString(hashcode);
-			Integer binaryInteger = Integer.valueOf(binaryString);
-			String formatedBinaryString = String.format("%08d", binaryInteger);
-			featureBinaryString += formatedBinaryString;
+			sb.append((bytes[i / Byte.SIZE] << i % Byte.SIZE & 0x80) == 0 ? '0' : '1');
 		}
-
-		return featureBinaryString;
+		return sb.toString();
 	}
 
 	public static void main(String[] args)
