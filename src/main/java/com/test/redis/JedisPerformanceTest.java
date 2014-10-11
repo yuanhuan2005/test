@@ -13,7 +13,6 @@ import redis.clients.jedis.JedisPoolConfig;
 
 public class JedisPerformanceTest
 {
-
 	JedisPool pool;
 	Jedis jedis;
 
