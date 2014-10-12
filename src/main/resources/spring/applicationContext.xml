@@ -16,4 +16,11 @@
 		<bean id="human" class="com.test.spring.Human"></bean>
 		<bean id="sleepHandler" class="com.test.spring.SleepHandler"></bean>
 		
+		<bean id="car" class="com.test.spring.Car">
+			<constructor-arg value="Audi" type="String"></constructor-arg>
+			<constructor-arg value="Shanghai" type="String"></constructor-arg>
+			<constructor-arg value="400000" type="double"></constructor-arg>
+		</bean>
+		
+		<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
 </beans>
