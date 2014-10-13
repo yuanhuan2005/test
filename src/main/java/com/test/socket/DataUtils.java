@@ -4,6 +4,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Arrays;
+import java.util.Random;
+
+import com.test.util.FileUtils;
 
 public class DataUtils
 {
@@ -21,15 +24,18 @@ public class DataUtils
 		return outSteam.toByteArray();
 	}
 
-	public static byte[] getFeature()
+	public static byte[] getFeature(int from)
 	{
 		try
 		{
 			String dataFile = "E:/BaiduYunDownload/wonder/results/smokin-aces-2.data";
 			File file = new File(dataFile);
 			FileInputStream fin = new FileInputStream(file);
-			byte[] filebt = DataUtils.readStream(fin);
-			return Arrays.copyOfRange(filebt, 0, 160);
+			//			byte[] filebt = DataUtils.readStream(fin);
+			byte[] filebt = FileUtils.toByteArray(dataFile);
+			Random r = new Random();
+			System.out.println(from);
+			return Arrays.copyOfRange(filebt, from, from + 160);
 		}
 		catch (Exception e)
 		{
@@ -41,6 +47,8 @@ public class DataUtils
 
 	public static void main(String[] args)
 	{
-		DataUtils.getFeature();
+		String s = "This is a test code";
+		byte[] bytes = s.getBytes();
+		System.out.println(new String(bytes));
 	}
 }
