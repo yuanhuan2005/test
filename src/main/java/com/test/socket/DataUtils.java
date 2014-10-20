@@ -3,8 +3,8 @@ package com.test.socket;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Arrays;
-import java.util.Random;
 
 import com.test.util.FileUtils;
 
@@ -26,14 +26,14 @@ public class DataUtils
 
 	public static byte[] getFeature(int from)
 	{
+		FileInputStream fin = null;
 		try
 		{
 			String dataFile = "E:/BaiduYunDownload/wonder/results/smokin-aces-2.data";
 			File file = new File(dataFile);
-			FileInputStream fin = new FileInputStream(file);
+			fin = new FileInputStream(file);
 			//			byte[] filebt = DataUtils.readStream(fin);
 			byte[] filebt = FileUtils.toByteArray(dataFile);
-			Random r = new Random();
 			System.out.println(from);
 			return Arrays.copyOfRange(filebt, from, from + 160);
 		}
@@ -41,7 +41,21 @@ public class DataUtils
 		{
 			e.printStackTrace();
 		}
-
+		finally
+		{
+			try
+			{
+				if (fin != null)
+				{
+					fin.close();
+				}
+			}
+			catch (IOException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		return null;
 	}
 
