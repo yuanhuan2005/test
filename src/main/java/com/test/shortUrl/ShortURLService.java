@@ -61,6 +61,12 @@ public class ShortURLService
 		return shortUrl;
 	}
 
+	/**
+	 * 查询百度短URL
+	 *  
+	 * @param shortUrl 短URL
+	 * @return 对应的长URL
+	 */
 	public static String queryBaiduShortUrl(String shortUrl)
 	{
 		if (StringUtils.isEmpty(shortUrl))
