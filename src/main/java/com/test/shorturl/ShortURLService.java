@@ -1,4 +1,4 @@
-package com.test.shortUrl;
+package com.test.shorturl;
 
 import java.io.IOException;
 import java.util.ArrayList;
